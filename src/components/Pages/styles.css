@@ -1,4 +1,23 @@
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.content-container {
+  display: flex;
+}
+
 .movie-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* .favorites-container {
+  flex: 1;
+  flex-shrink: 0;
+  border: 1px solid #ddd; 
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  margin-top: 10px;
+} */

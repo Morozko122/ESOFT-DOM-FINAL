@@ -12,6 +12,7 @@ export const fetchData = createAsyncThunk(
     }
 );
 
+
 const apiSlice = createSlice({
     name: 'api',
     initialState: {
@@ -19,7 +20,18 @@ const apiSlice = createSlice({
         loading: false,
         error: null
     },
-    reducers: {},
+    reducers: {
+        addComment: (state, action) => {
+            const { movieId, comment } = action.payload;
+            const movie = state.data.find(movie => movie.id === movieId);
+            if (movie) {
+                if (!movie.comments) {
+                    movie.comments = [];
+                }
+                movie.comments.push(comment);
+            }
+        }
+    },
     extraReducers: builder => {
         builder
             .addCase(fetchData.pending, (state) => {
@@ -36,6 +48,7 @@ const apiSlice = createSlice({
             });
     }
 });
+
 const favoritesSlice = createSlice({
     name: 'favorites',
     initialState: {
@@ -55,8 +68,59 @@ const favoritesSlice = createSlice({
     }
 });
 
+const sortSlice = createSlice({
+    name: 'sort',
+    initialState:{
+        method: 'default'
+    },
+    reducers: {
+        setSortMethod(state, action) {
+            return { ...state, method: action.payload };
+        }
+    }
+});
+
+
+const similarMoviesSlice = createSlice({
+    name: 'similarMovies',
+    initialState: {
+        list: []
+    },
+    reducers: {
+        setSimilarMovies: (state, action) => {
+            state.list = action.payload;
+        }
+    }
+});
+
+const filterSlice = createSlice({
+    name: 'filter',
+    initialState: {
+        title: '',
+        genres: []
+    },
+    reducers: {
+        setTitleFilter(state, action) {
+            state.title = action.payload;
+        },
+        setGenreFilter(state, action) {
+            state.genres = action.payload;
+        },
+        clearFilters(state) {
+            state.title = '';
+            state.genres = [];
+        }
+    }
+});
 export const { addFavorite, removeFavorite } = favoritesSlice.actions;
+export const { setSortMethod } = sortSlice.actions;
+export const { addComment } = apiSlice.actions;
+export const { setSimilarMovies } = similarMoviesSlice.actions;
+export const { setTitleFilter, setGenreFilter, clearFilters } = filterSlice.actions;
 export const rootReducer = {
     api: apiSlice.reducer,
-    favorites: favoritesSlice.reducer
+    favorites: favoritesSlice.reducer,
+    sort: sortSlice.reducer,
+    similar: similarMoviesSlice.reducer,
+    filter: filterSlice.reducer
 };

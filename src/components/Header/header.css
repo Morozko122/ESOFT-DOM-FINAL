@@ -1,0 +1,23 @@
+.header {
+    background-color:cornflowerblue;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    
+}
+.nav-link{
+    margin: 10px
+}
+
+.nav-link-text {
+    margin: 0 10px;
+    color: black;
+    text-decoration: none; /* Убираем подчеркивание */
+}
+.nav-link-text:hover {
+    color: #fff; /* Цвет текста после посещения */
+}

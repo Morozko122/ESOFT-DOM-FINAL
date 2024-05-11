@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        <MainPage />
+        <Router/>
       </Provider>
       {/* <Router></Router> */}
 
