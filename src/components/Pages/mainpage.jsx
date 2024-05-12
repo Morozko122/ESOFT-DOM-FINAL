@@ -13,9 +13,10 @@ const MainPage = () => {
   const sortBy = useSelector(state => state.sort.method)
 
   useEffect(() => {
-    if(data &&data.length==0){
-    dispatch(fetchData());}
-}, [dispatch, data]);
+    if (data && data.length == 0) {
+      dispatch(fetchData());
+    }
+  }, [dispatch, data]);
 
   const handleAddToFavorite = (movie) => {
     dispatch(addFavorite(movie));
@@ -50,11 +51,11 @@ const MainPage = () => {
         <button onClick={() => handleSortChange('asc')}>По возрастанию</button>
         <button onClick={() => handleSortChange('desc')}>По убыванию</button>
       </div>
-        <div className="movie-container">
-          {sortMovies(data).map(item => (
-            <MovieCard key={item.id} movie={item} handleAddToFavorite={() => handleAddToFavorite(item)} />
-          ))}
-        </div>
+      <div className="movie-container">
+        {sortMovies(data).map(item => (
+          <MovieCard key={item.id} movie={item} handleAddToFavorite={() => handleAddToFavorite(item)} />
+        ))}
+      </div>
     </div>
   );
 };

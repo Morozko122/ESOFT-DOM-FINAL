@@ -2,11 +2,12 @@
     background-color:cornflowerblue;
     border-radius: 10px;
     margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .nav {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     
 }
 .nav-link{
@@ -15,9 +16,9 @@
 
 .nav-link-text {
     margin: 0 10px;
-    color: black;
+    color: white;
     text-decoration: none; /* Убираем подчеркивание */
 }
 .nav-link-text:hover {
-    color: #fff; /* Цвет текста после посещения */
+    color: orange; /* Цвет текста после посещения */
 }
