@@ -1,11 +1,12 @@
-.movie-container{
+.movie-container {
     display: flex;
     flex-wrap: wrap;
 }
+
 .movie-details-container {
     display: flex;
     align-items: flex-start;
-    border: 1px solid #ddd; 
+    border: 1px solid #ddd;
     border-radius: 10px;
     padding: 20px;
     background-color: #fff;
@@ -88,6 +89,7 @@
 .comments-section button:hover {
     background-color: #0056b3;
 }
+
 .similar-movies-container {
     margin-top: 20px;
     background-color: #aaaaaa;
@@ -97,6 +99,6 @@
     width: 100%;
 }
 
-.similar-movies-container h2{
+.similar-movies-container h2 {
     color: #fff;
 }

@@ -1,10 +1,12 @@
-import { useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addComment, fetchData, setSimilarMovies, addFavorite} from '../testredux';
+import { addComment, fetchData } from '../Slices/apiSlices';
+import { setSimilarMovies } from '../Slices/similarMoviesSlice';
+import { addFavorite } from '../Slices/favoriteSlices';
 import { MovieCard } from '../MovieCard/moviecard';
 import './moviepage.css';
-import './styles.css';
+import '../Pages/styles.css';
 
 const findSimilarMovies = (sourceMovie, allMovies) => {
     const sourceGenres = sourceMovie.genres;
@@ -24,8 +26,9 @@ const MovieDetailsPage = () => {
     const loading = useSelector(state => state.api.loading);
     const error = useSelector(state => state.api.error);
     useEffect(() => {
-        if(data &&data.length==0){
-        dispatch(fetchData());}
+        if (data && data.length == 0) {
+            dispatch(fetchData());
+        }
     }, [dispatch, data]);
 
     const { id } = useParams();
@@ -33,11 +36,11 @@ const MovieDetailsPage = () => {
         state.api.data.find(movie => movie.id === parseInt(id))
     );
     const allMovies = useSelector(state => state.api.data);
-    const similarMovies = useSelector(state => state.similar.list); 
+    const similarMovies = useSelector(state => state.similarMovies.list);
 
     const handleAddToFavorite = (movie) => {
         dispatch(addFavorite(movie));
-      };
+    };
 
     useEffect(() => {
         if (movie && allMovies.length > 0) {
@@ -47,12 +50,12 @@ const MovieDetailsPage = () => {
     }, [dispatch, movie, allMovies]);
     if (loading) {
         return <div>Загрузка...</div>;
-      }
-    
-      if (error) {
+    }
+
+    if (error) {
         return <div>Ошибка: {error}</div>;
-      }
-    
+    }
+
     if (!movie) {
         return <div className="movie-details-container">Фильм не найден</div>;
     }
@@ -84,32 +87,32 @@ const MovieDetailsPage = () => {
                 </div>
             </div>
             <div className="comments-section">
-            <form onSubmit={handleCommentSubmit}>
-                <textarea
-                    value={commentText}
-                    onChange={handleCommentChange}
-                    placeholder="Напишите комментарий..."
-                />
-                <button type="submit">Отправить</button>
-            </form>
+                <form onSubmit={handleCommentSubmit}>
+                    <textarea
+                        value={commentText}
+                        onChange={handleCommentChange}
+                        placeholder="Напишите комментарий..."
+                    />
+                    <button type="submit">Отправить</button>
+                </form>
 
-            {movie.comments && (
-                <div className="comments-container">
-                    <h2>Комментарии</h2>
-                    {movie.comments.map((comment, index) => (
-                        <div key={index} className="comment">
-                            <p><b>Анонимный пользователь</b></p>
-                            <p>{comment}</p>
-                        </div>
-                    ))}
-                </div>
-            )}
+                {movie.comments && (
+                    <div className="comments-container">
+                        <h2>Комментарии</h2>
+                        {movie.comments.map((comment, index) => (
+                            <div key={index} className="comment">
+                                <p><b>Анонимный пользователь</b></p>
+                                <p>{comment}</p>
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
             <div className="similar-movies-container">
                 <h2>Похожие фильмы</h2>
                 <div className="movie-container">
                     {similarMovies.map(similarMovie => (
-                        <MovieCard key={similarMovie.id} movie={similarMovie} handleAddToFavorite={() => handleAddToFavorite(similarMovie)}/>
+                        <MovieCard key={similarMovie.id} movie={similarMovie} handleAddToFavorite={() => handleAddToFavorite(similarMovie)} />
                     ))}
                 </div>
             </div>

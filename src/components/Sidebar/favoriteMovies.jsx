@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { removeFavorite } from '../testredux';
+import { removeFavorite } from '../Slices/favoriteSlices';
 import './sidebar.css';
 
 const FavoritesList = () => {
@@ -16,7 +16,7 @@ const FavoritesList = () => {
     <div className='sidebar-container'>
       <h2 className='fav-container-label'>Избранные фильмы</h2>
       {favorites.length === 0 ? (
-        <p className='empty-list'>Список избранных фильмов пуст</p>
+        <p className='empty-list'>Список пуст</p>
       ) : (
         <div>
           {favorites.map(favorite => (
@@ -24,7 +24,7 @@ const FavoritesList = () => {
               <img src={favorite.image} alt={favorite.title} />
               <div className='short-details'>
                 <div className="title">
-                <div className='fav-link'><Link to={`/films/${favorite.id}`} className='fav-link-text'><b>{favorite.title}</b></Link></div>
+                  <div className='fav-link'><Link to={`/films/${favorite.id}`} className='fav-link-text'><b>{favorite.title}</b></Link></div>
                 </div>
                 <button onClick={() => handleRemoveFromFavorite(favorite.id)}>Убрать</button>
               </div>

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-function PageNotFound() {  
+function PageNotFound() {
   const navigate = useNavigate();
-  const tt = ()=>{
+  const tt = () => {
     navigate('/');
   }
   return (

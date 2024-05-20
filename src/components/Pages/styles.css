@@ -12,17 +12,25 @@
   flex-wrap: wrap;
 }
 
-.sort-buttons{
+.sort-buttons,
+.filter-buttons {
   display: flex;
   flex-direction: row;
   background-color: #f9f9f9;
   border-radius: 10px;
   padding: 20px;
-  margin-bottom: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
 }
-.sort-buttons button{
-  margin-left: 0;
-  margin-right: 7px;
+
+.sort-buttons button,
+.filter-buttons button {
+  background-color: #007bff;
+}
+
+.sort-buttons button:hover,
+.filter-buttons button:hover {
+  background-color: #0056b3;
 }

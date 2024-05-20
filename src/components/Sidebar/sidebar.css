@@ -1,3 +1,11 @@
+.sidebar-container .fav-container-label {
+  color: white;
+}
+
+.sidebar-container .empty-list {
+  color: white;
+}
+
 .favorite-item {
   display: flex;
   align-items: center;
@@ -21,12 +29,6 @@
   margin-left: 0;
   width: 100%;
 }
-.sidebar-container .fav-container-label {
-  color: white;
-}
-.sidebar-container .empty-list {
-  color: white;
-}
 
 .short-details {
   display: flex;
@@ -36,13 +38,16 @@
   width: 100%;
   height: 150px;
 }
-.fav-link{
+
+.fav-link {
   text-decoration: none;
 }
-.fav-link-text{
+
+.fav-link-text {
   color: white;
   text-decoration: none;
 }
-.fav-link-text:hover{
-  color:dodgerblue;
+
+.fav-link-text:hover {
+  color: dodgerblue;
 }

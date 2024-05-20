@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { fetchData, setTitleFilter, setGenreFilter, addFavorite } from '../testredux';
+import { fetchData } from '../Slices/apiSlices';
+import { setTitleFilter, setGenreFilter } from '../Slices/filterSlice';
 import { MovieCard } from '../MovieCard/moviecard';
 import Select from 'react-select';
 import '../MovieCard/moviecard.css';
@@ -11,7 +12,7 @@ const SearchPage = () => {
     const movies = useSelector(state => state.api.data);
     const titleFilter = useSelector(state => state.filter.title);
     const genreFilter = useSelector(state => state.filter.genres);
-    
+
     const [selectedGenres, setSelectedGenres] = useState([]);
 
     useEffect(() => {
@@ -19,10 +20,6 @@ const SearchPage = () => {
             dispatch(fetchData());
         }
     }, [dispatch, movies]);
-    
-    const handleAddToFavorite = (movie) => {
-        dispatch(addFavorite(movie));
-    };
 
     const handleTitleChange = (event) => {
         dispatch(setTitleFilter(event.target.value));
@@ -76,7 +73,7 @@ const SearchPage = () => {
             {titleFilter || selectedGenres.length > 0 ? (
                 <div className='movie-container'>
                     {filteredMovies.map(movie => (
-                        <MovieCard key={movie.id} movie={movie} handleAddToFavorite={() => handleAddToFavorite(movie)}/>
+                        <MovieCard key={movie.id} movie={movie} />
                     ))}
                 </div>
             ) : <h2 className='not-found-text'>Ничего не найдено</h2>}
