@@ -15,7 +15,6 @@
     margin-right: 10px;
     width: 30%;
     border: none;
-    /* <-- This thing here */
     border: solid 1px #ccc;
     border-radius: 4px;
 }

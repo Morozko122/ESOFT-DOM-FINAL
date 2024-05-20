@@ -17,8 +17,8 @@
 .nav-link-text {
     margin: 0 10px;
     color: white;
-    text-decoration: none; /* Убираем подчеркивание */
+    text-decoration: none;
 }
 .nav-link-text:hover {
-    color: orange; /* Цвет текста после посещения */
+    color: orange;
 }
