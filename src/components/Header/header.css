@@ -1,0 +1,24 @@
+.header {
+    background-color:cornflowerblue;
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+    display: flex;
+    justify-content: start;
+    
+}
+.nav-link{
+    margin: 10px
+}
+
+.nav-link-text {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+}
+.nav-link-text:hover {
+    color: orange;
+}

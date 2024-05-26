@@ -1,0 +1,36 @@
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.content-container {
+  display: flex;
+}
+
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sort-buttons,
+.filter-buttons {
+  display: flex;
+  flex-direction: row;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.sort-buttons button,
+.filter-buttons button {
+  background-color: #007bff;
+}
+
+.sort-buttons button:hover,
+.filter-buttons button:hover {
+  background-color: #0056b3;
+}
